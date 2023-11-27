@@ -1,3 +1,21 @@
+type FisherArgs = record {
+    id: text;
+    name: text;
+    city: text;
+    age: int32;
+};
+
+
+type FishArgs = record {
+    id: text;
+    fisher: text;
+    weight: int32;
+    height: int32;
+};
+
 service : {
-    "greet": (text) -> (text) query;
+    "get_fisher": (text) -> (FisherArgs) query;
+    "get_fish": (text) -> (FishArgs) query;
+    "save_fisher": (FisherArgs) -> (text);
+    "save_fish": (FishArgs) -> (text);
 }
