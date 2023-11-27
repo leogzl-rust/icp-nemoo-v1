@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "icp_nemoo_v1_backend": {
+      "candid": "src/icp_nemoo_v1_backend/icp_nemoo_v1_backend.did",
+      "package": "icp_nemoo_v1_backend",
+      "type": "rust"
+    },
+    "icp_nemoo_v1_frontend": {
+      "dependencies": [
+        "icp_nemoo_v1_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/icp_nemoo_v1_frontend/src/index.html"
+      },
+      "source": [
+        "src/icp_nemoo_v1_frontend/assets",
+        "dist/icp_nemoo_v1_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
