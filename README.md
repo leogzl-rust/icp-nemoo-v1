@@ -5,7 +5,7 @@
 To deploy
 
 ```bash
-dfx deploy --network ic --with-cycles 1000000000000
+dfx deploy --network ic --with-cycles 100000000000
 ```
 
 To check balance
@@ -20,6 +20,12 @@ Regenerate language bindings with the generate
 npm run generate
 ```
 
+Last Balance:
+
+```
+28 Nov 15:00          2.998 TC (trillion cycles).
+28 Nov 15:10          2.998 TC (trillion cycles).
+```
 
 ## Introduction
 
