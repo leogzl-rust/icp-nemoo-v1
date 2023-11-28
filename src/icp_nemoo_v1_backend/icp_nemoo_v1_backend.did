@@ -14,6 +14,7 @@ type FishArgs = record {
 };
 
 service : {
+    "get_command": () -> (text) query;
     "get_fisher": (text) -> (FisherArgs) query;
     "get_fish": (text) -> (FishArgs) query;
     "save_fisher": (FisherArgs) -> (text);

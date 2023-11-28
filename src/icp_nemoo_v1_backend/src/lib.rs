@@ -1,13 +1,11 @@
 use candid::CandidType;
 use lazy_static::lazy_static;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::hash::Hash;
-use std::marker::Copy;
 use std::sync::Mutex;
 
-use std::collections::HashMap;
-
-#[derive(CandidType, Serialize, Deserialize,  Clone, Debug, Hash, PartialEq)]
+#[derive(CandidType, Serialize, Deserialize, Clone, Debug, Hash, PartialEq)]
 pub struct Fisher {
     id: String,
     name: String,
@@ -26,6 +24,11 @@ pub struct Fish {
 lazy_static! {
     static ref FISH: Mutex<HashMap<String, Fish>> = Mutex::new(HashMap::new());
     static ref FISHER: Mutex<HashMap<String, Fisher>> = Mutex::new(HashMap::new());
+}
+
+#[ic_cdk::query]
+fn get_command() -> String {
+    format!("ic_nemoo_v1")
 }
 
 #[ic_cdk::query]
@@ -59,12 +62,15 @@ fn save_fish(fish: Fish) -> String {
     let id = fish.id;
 
     let mut map = FISH.lock().unwrap();
-    map.insert(id.clone(), Fish {
-        id: id.clone(),
-        fisher: fish.fisher,
-        height: fish.height,
-        weight: fish.weight,
-    });
+    map.insert(
+        id.clone(),
+        Fish {
+            id: id.clone(),
+            fisher: fish.fisher,
+            height: fish.height,
+            weight: fish.weight,
+        },
+    );
 
     format!("Save Success: {}", id)
 }
@@ -74,12 +80,15 @@ fn save_fisher(fisher: Fisher) -> String {
     let id = fisher.id;
 
     let mut map = FISHER.lock().unwrap();
-    map.insert(id.clone(), Fisher {
-        id: id.clone(),
-        name: fisher.name.clone(),
-        city: fisher.city.clone(),
-        age: fisher.age,
-    });
+    map.insert(
+        id.clone(),
+        Fisher {
+            id: id.clone(),
+            name: fisher.name.clone(),
+            city: fisher.city.clone(),
+            age: fisher.age,
+        },
+    );
 
     format!("Save Success: {}", id)
 }
