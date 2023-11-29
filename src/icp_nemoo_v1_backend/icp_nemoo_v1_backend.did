@@ -1,4 +1,4 @@
-type FisherArgs = record {
+type FisherArg = record {
     id: text;
     name: text;
     city: text;
@@ -6,7 +6,7 @@ type FisherArgs = record {
 };
 
 
-type FishArgs = record {
+type FishArg = record {
     id: text;
     fisher: text;
     weight: int32;
@@ -15,8 +15,8 @@ type FishArgs = record {
 
 service : {
     "get_command": () -> (text) query;
-    "get_fisher": (text) -> (FisherArgs) query;
-    "get_fish": (text) -> (FishArgs) query;
-    "save_fisher": (FisherArgs) -> (text);
-    "save_fish": (FishArgs) -> (text);
+    "get_fisher": (text) -> (FisherArg) query;
+    "get_fish": (text) -> (FishArg) query;
+    "save_fisher": (FisherArg) -> (text);
+    "save_fish": (FishArg) -> (text);
 }
