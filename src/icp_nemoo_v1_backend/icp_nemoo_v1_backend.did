@@ -8,9 +8,23 @@ type FisherArg = record {
 
 type FishArg = record {
     id: text;
+    tag_id: text;
     fisher: text;
-    weight: int32;
-    height: int32;
+    location: text;
+    date_catch: text;
+    date_process: text;
+    latitute: text;
+    longitude: text;
+    gross_weight: int32;
+    sekami_1: int32;
+    sekami_2: int32;
+    haranaka_1: int32;
+    haranaka_2: int32;
+    toro: int32;
+    head: int32;
+    tail: int32;
+    bone: int32;
+    skin: int32;
 };
 
 service : {
